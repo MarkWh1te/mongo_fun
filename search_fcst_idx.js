@@ -1,5 +1,4 @@
-var i = 1 
-
+var i = 1
 var fields_list = ['trade_date','symbol','mkt_idx.tcap'];
 var fields_dict = fields_list.map(x=>({x:{'$exist':false}}))
 var search_dict = {
@@ -7,8 +6,8 @@ var search_dict = {
          '$gte':ISODate('20070101'),
          '$lte':ISODate('20170728')
     },
-        'fsct_idx.es_3year':{
-            'exist':true
+        'fsct_idx.fcst_eps_next1':{
+            '$exists':false
         }
 }
 db.getCollection('Z3_EQUITY_HISTORY').find(
@@ -29,4 +28,3 @@ db.getCollection('Z3_EQUITY_HISTORY').find(
 //      },{
 //      }
 // ).sort({'trade_date':i})
-
